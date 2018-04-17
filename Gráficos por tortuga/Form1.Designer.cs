@@ -56,6 +56,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnDatos = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numAvance)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -223,7 +225,7 @@
             // lblCoordenadas
             // 
             this.lblCoordenadas.AutoSize = true;
-            this.lblCoordenadas.Location = new System.Drawing.Point(559, 192);
+            this.lblCoordenadas.Location = new System.Drawing.Point(583, 177);
             this.lblCoordenadas.Name = "lblCoordenadas";
             this.lblCoordenadas.Size = new System.Drawing.Size(43, 20);
             this.lblCoordenadas.TabIndex = 12;
@@ -259,9 +261,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(552, 376);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 20);
+            this.label3.Size = new System.Drawing.Size(110, 20);
             this.label3.TabIndex = 16;
-            this.label3.Text = "1: Pluma arriba";
+            this.label3.Text = "1 Pluma arriba";
             // 
             // label4
             // 
@@ -270,52 +272,52 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(216, 20);
             this.label4.TabIndex = 17;
-            this.label4.Text = "5/ avance: Avanza x espacios";
+            this.label4.Text = "5: avance  Avanza x espacios";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(552, 439);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(124, 20);
+            this.label5.Size = new System.Drawing.Size(120, 20);
             this.label5.TabIndex = 18;
-            this.label5.Text = "4: Gira izquierda";
+            this.label5.Text = "4 Gira izquierda";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(552, 419);
+            this.label6.Location = new System.Drawing.Point(551, 419);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(118, 20);
+            this.label6.Size = new System.Drawing.Size(114, 20);
             this.label6.TabIndex = 19;
-            this.label6.Text = "3: Gira derecha";
+            this.label6.Text = "3 Gira derecha";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(552, 399);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(113, 20);
+            this.label7.Size = new System.Drawing.Size(109, 20);
             this.label7.TabIndex = 20;
-            this.label7.Text = "2: Pluma abajo";
+            this.label7.Text = "2 Pluma abajo";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(551, 479);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(152, 20);
+            this.label8.Size = new System.Drawing.Size(148, 20);
             this.label8.TabIndex = 21;
-            this.label8.Text = "6: Imprime el tablero";
+            this.label8.Text = "6 Imprime el tablero";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(552, 499);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(114, 20);
+            this.label9.Size = new System.Drawing.Size(110, 20);
             this.label9.TabIndex = 22;
-            this.label9.Text = "7: Fin de datos";
+            this.label9.Text = "7 Fin de datos";
             // 
             // btnDatos
             // 
@@ -331,17 +333,39 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(608, 598);
+            this.label10.Location = new System.Drawing.Point(172, 586);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(184, 20);
+            this.label10.Size = new System.Drawing.Size(215, 20);
             this.label10.TabIndex = 24;
-            this.label10.Text = "El avance deber ser >= 8";
+            this.label10.Text = "5: 10 (Ej. Avanzar 10 casillas)";
+            // 
+            // btnReset
+            // 
+            this.btnReset.AutoSize = true;
+            this.btnReset.Location = new System.Drawing.Point(807, 482);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(115, 37);
+            this.btnReset.TabIndex = 25;
+            this.btnReset.Text = "Reset tablero";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(559, 157);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(98, 20);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "Tortuga pos:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(932, 654);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnDatos);
             this.Controls.Add(this.label9);
@@ -409,6 +433,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnDatos;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Label label11;
     }
 }
 

@@ -20,6 +20,11 @@ namespace Gráficos_por_tortuga
                 this.rows = rows;
                 this.cols = columns;
 
+                reset();
+            }
+
+            public void reset()
+            {
                 for (int i = 0; i < rows; i++)
                     for (int j = 0; j < cols; j++)
                         tablero[i, j] = 0;
@@ -80,28 +85,28 @@ namespace Gráficos_por_tortuga
                 {
                     case 1:
                         hasta = rowPosition - avance < 0 ? 0 : rowPosition - avance;
-                        for (int i = rowPosition; i >= hasta; i--)
+                        for (int i = rowPosition - 1; i >= hasta; i--)
                             tablero.tablero[i, colPosition] = PlumaState == 0 ? 1 : tablero.tablero[i, colPosition];
 
                         rowPosition = hasta;
                         break;
                     case 2:
                         hasta = rowPosition + avance >= tablero.Rows ? tablero.Rows - 1 : rowPosition + avance;
-                        for(int i = rowPosition; i <= hasta; i++)
+                        for(int i = rowPosition + 1; i <= hasta; i++)
                             tablero.tablero[i, colPosition] = PlumaState == 0 ? 1 : tablero.tablero[i, colPosition];
 
                         rowPosition = hasta;
                         break;
                     case 3:
                         hasta = colPosition - avance < 0 ? 0 : colPosition - avance;
-                        for (int i = colPosition; i >= hasta; i--)
+                        for (int i = colPosition - 1; i >= hasta; i--)
                             tablero.tablero[rowPosition, i] = PlumaState == 0 ? 1 : tablero.tablero[rowPosition, i];
 
                         colPosition = hasta;
                         break;
                     case 4:
                         hasta = colPosition + avance >= tablero.Cols ? tablero.Cols - 1 : colPosition + avance;
-                        for(int i = colPosition; i <= hasta; i++)
+                        for(int i = colPosition + 1; i <= hasta; i++)
                             tablero.tablero[rowPosition, i] = PlumaState == 0 ? 1 : tablero.tablero[rowPosition, i];
 
                         colPosition = hasta;
@@ -173,11 +178,39 @@ namespace Gráficos_por_tortuga
 
         private void btnDatos_Click(object sender, EventArgs e)
         {
+            //2,5:12,3,5:12,3,5:12,3,5:12,1,6,7
             string[] datos = txtDatos.Text.Split(',');
 
             for (int i = 0; i < datos.Length; i++)
             {
-                int num = Convert.ToInt32(datos[i].Trim());
+                int num = 0;
+                int avance = 0;
+                try
+                {
+                    num = Convert.ToInt32(datos[i].Trim());
+                }
+                catch (Exception)
+                {
+                    if (datos[i].Trim().Contains(":"))
+                    {
+                        try
+                        {
+                            string[] avanceValor = datos[i].Split(':');
+                            num = Convert.ToInt32(avanceValor[0].Trim());
+                            avance = Convert.ToInt32(avanceValor[1].Trim());
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Valor inválido de avance");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingresa solamente números o ',' para separar las instrucciones o ':' para separar la instrccuión de avance (5) y la cantidad de avance");
+                        return;
+                    }
+                }
                 switch (num)
                 {
                     case 1:
@@ -193,7 +226,7 @@ namespace Gráficos_por_tortuga
                         girar(false);
                         break;
                     case 5:
-                        numAvance.Value = Convert.ToDecimal(datos[i + 1].Trim());
+                        numAvance.Value = avance > numAvance.Maximum ? numAvance.Maximum : avance;
                         btnAvanzar.PerformClick();
                         break;
                     case 6:
@@ -223,6 +256,12 @@ namespace Gráficos_por_tortuga
                     tortuga.Direction = isRight ? (int)Direction.UP : (int)Direction.DOWN;
                     break;
             }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            tortuga.tablero.reset();
+            btnMostrar.PerformClick();
         }
     }
 }
